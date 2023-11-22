@@ -12,6 +12,14 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "tf-example"
+  }
+}
+
 resource "aws_instance" "app_server" {
   ami           = "ami-0694d931cee176e7d"
   instance_type = "t2.micro"
